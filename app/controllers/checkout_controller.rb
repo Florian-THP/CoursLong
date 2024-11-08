@@ -17,7 +17,9 @@ class CheckoutController < ApplicationController
         },
       ],
       mode: 'payment',
-      metadata: {article_id: @article_id},
+      metadata: {
+          article_id: @article_id
+        },
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
@@ -28,14 +30,16 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @article_id = @session.metadata.article_id
-    
-    stripe_customer_id = "stripe_#{SecureRandom.hex(10)}"  # Générer un ID unique pour l'utilisateur
-        Order.create(user_id: current_user.id, article_id: @article_id, stripe_customer_id: stripe_customer_id)
+    @article = Article.find(@article_id)
 
-    
+    stripe_customer_id = "stripe_#{SecureRandom.hex(10)}"
+    Order.create(user_id: current_user.id, article_id: @article_id, stripe_customer_id: stripe_customer_id)
+    @article.update(sold: true)
+    redirect_to articles_path
 
   end
 
   def cancel
   end
+
 end

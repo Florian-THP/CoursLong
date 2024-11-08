@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.where(sold: false)
   end
 end
