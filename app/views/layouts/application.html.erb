@@ -21,9 +21,11 @@
     <nav>
       <%= link_to "Acceuil", root_path, class: "linknav"%>
       <% if user_signed_in? %>
-       <%= form_with url: destroy_user_session_path, method: :delete do %>
-       <%= submit_tag "Se déconnecter", class: "btnlogout" %>
-      <% end %>
+      
+          <%= form_with url: destroy_user_session_path, method: :delete do %>
+          <%= submit_tag "Se déconnecter", class: "btnlogout" %>
+          <% end %>
+
       <% else %>
         <%= link_to "Se connecter", new_user_session_path %> |
         <%= link_to "S'inscrire", new_user_registration_path %>

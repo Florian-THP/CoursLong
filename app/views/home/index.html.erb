@@ -1,4 +1,9 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Liste des article</h1>
 
-
+<% @articles.each do |article|%>
+<p><%= article.name%></p>
+<p><%= article.description%></p>
+<p><%= article.price%> francs suisse</p>
+</br>
+</br>
+<%end%>
