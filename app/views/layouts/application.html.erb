@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Appleboncoin" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav>
+      <%= link_to "Acceuil", root_path, class: "linknav"%>
+      <% if user_signed_in? %>
+       <%= form_with url: destroy_user_session_path, method: :delete do %>
+       <%= submit_tag "Se déconnecter", class: "btnlogout" %>
+      <% end %>
+      <% else %>
+        <%= link_to "Se connecter", new_user_session_path %> |
+        <%= link_to "S'inscrire", new_user_registration_path %>
+      <% end %>
+
+    </nav>
+    <%= yield %>
+  </body>
+</html>
