@@ -23,6 +23,7 @@
       <% if user_signed_in? %>
       
           <%= form_with url: destroy_user_session_path, method: :delete do %>
+          <%= link_to "mon profil", profil_path(current_user.id)%>
           <%= submit_tag "Se déconnecter", class: "btnlogout" %>
           <% end %>
 
