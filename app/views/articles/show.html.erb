@@ -3,4 +3,11 @@
 <p><%= @article.price%> francs suisse</p>
 <%= link_to "#{@article.vendor.email}", profil_path(@article.vendor.id)%>
 
+
+
+
+<%= button_to "Acheter", checkout_create_path(total: @article.price, article_id: @article.id), data: {turbo: false} %>
+
+
+
 <%= link_to 'Revenir a Liste article', articles_path %>
