@@ -1,6 +1,6 @@
-<h1>Nos derniers article lister :</h1>
+<h1>Liste des article</h1>
 
-<% @articles.last(3).each do |article|%>
+<% @articles.each do |article|%>
 <p><%= article.name%></p>
 <p><%= article.description%></p>
 <p><%= article.price%> francs suisse</p>
