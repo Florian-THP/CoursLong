@@ -25,7 +25,7 @@
           <%= form_with url: destroy_user_session_path, method: :delete do %>
           <%= link_to "mon profil", profil_path(current_user.id)%>
           <%= submit_tag "Se déconnecter", class: "btnlogout" %>
-          <%= link_to "Vendre un article", article_new_path%>
+          <%= link_to "Vendre un article", new_article_path%>
           <% end %>
 
       <% else %>
