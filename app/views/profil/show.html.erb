@@ -1,0 +1,5 @@
+<%= current_user.email%>
+
+<% if @user == current_user%>
+<%= link_to "edit profil", edit_user_registration_path%>
+<%end%>
