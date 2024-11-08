@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   def new
    @article = Article.new
   end
+  
 
   def create
     @article = current_user.articles.new(params_article)  # Associe l'article à l'utilisateur actuel
