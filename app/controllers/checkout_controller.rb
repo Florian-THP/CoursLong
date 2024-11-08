@@ -32,6 +32,8 @@ class CheckoutController < ApplicationController
     stripe_customer_id = "stripe_#{SecureRandom.hex(10)}"  # Générer un ID unique pour l'utilisateur
         Order.create(user_id: current_user.id, article_id: @article_id, stripe_customer_id: stripe_customer_id)
 
+    
+
   end
 
   def cancel
